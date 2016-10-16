@@ -42,7 +42,7 @@ module.exports = function () {
             exclude: /(node_modules)/
         }, {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?includePaths[]='
+            loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass!sass-resources?includePaths[]='
                 + './node_modules')
         }, {
             test: /\.css$/,
@@ -57,6 +57,12 @@ module.exports = function () {
             exclude: /(index.html)/
         }]
     };
+
+    config.sassResources = [
+        './src/assets/scss/_variables.scss',
+        './node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss',
+        './node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/*.scss'
+    ];
 
     config.postcss = [
         autoprefixer({
